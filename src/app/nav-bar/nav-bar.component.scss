@@ -1,1 +1,21 @@
-body{direction: rtl;}
+body{}
+.nav{
+  direction: rtl;  
+  background-color:rgb(226, 142, 205) !important;
+ text-align: center;
+
+}
+.a{
+    color: rgb(226, 55, 77);
+    text-decoration: none;
+   
+}
+h1{
+    direction: ltr;
+ text-align: center;
+ color: cornflowerblue;
+}
+.space{
+    margin: 5%;
+    margin-right: 40%;
+}
