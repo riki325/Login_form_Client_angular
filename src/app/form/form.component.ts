@@ -13,15 +13,20 @@ import {FormControl, Validators} from '@angular/forms';
 export class FormComponent implements OnInit {
   childFName = new FormControl('', [Validators.required]);
   userArr: PrivateUserDetails[] = []
-  user = new PrivateUserDetails(0, " ", " ", " ", "01/01/2003", " ", " ", -1, " ");
-  child = new PrivateUserDetails(0, " ", " ", " ",  "01/01/2003", " ", " ", -1, " ");
-  childArr: PrivateUserDetails[] = []
+  user = new PrivateUserDetails(0, " ", " ", " ", "01/01/2003", " ", " ", -1, " "," ");
+  child = new PrivateUserDetails(0, " ", " ", " ",  "01/01/2003", " ", " ", -1, " "," ");
+  childArr: PrivateUserDetails[] ;
+  arrDownload:PrivateUserDetails[]=[];
   display = false;
   index: number;
   all: PrivateUserDetails[];
   familyId = 0;
   displayWife = false;
-  wifeIdNumber: string;
+  Married=false;
+want=false;
+userPassword="";
+ManagerPassword="123"
+isManager=false;
   constructor(public userService: UserService) { }
 
   logIn() {
@@ -45,59 +50,68 @@ this.userService.currentUserService.FamilyId=this.familyId++;
   }
   save() {
     
-    this.userService.currentUserService.Status="father"
-   this.userService.currentUserService.Genus == "male" ? this.userService.currentUserService.Status == "father" : this.userService.currentUserService.Status == "mother";
+    if(  this.userService.currentUserService.Genus=="male"&&this.Married==true)
+    this.userService.currentUserService.Status="father";
+    else if(this.userService.currentUserService.Genus=="fmale"&&this.Married==true)
+    this.userService.currentUserService.Status="mother"
+    else
+    this.userService.currentUserService.Status="single";
     this.userService.addUser(this.userService.currentUserService).subscribe(
        (suc) => { console.log("הצליח") },
        (err) => {
         
         console.log(err)
     });
-    
-    
     console.log(this.userService.currentUserService)
   }
-  
   getErrorMessage() {
     if (this.childFName.hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.childFName.hasError('childFName') ? 'Not a valid childFName' : '';
   }
-
-
 moreChild() {
   this.display = true;
 }
 
 addChild() {
+  this.child.SpouseId=this.userService.currentUserService.SpouseId;
   this.child.Status="child";
   this.child.HMO=this.userService.currentUserService.HMO;
   this.child.FamilyId=this.userService.currentUserService.FamilyId;
   console.log(this.child)
   this.userService.addUser(this.child).subscribe((succ) => {
     console.log("succ")})
-    this.child=new PrivateUserDetails(0, " ", " ", " ", null, " ", " ", -1, " ");
+    this.child=new PrivateUserDetails(0, " ", " ", " ", null, " ", " ", -1, " "," ");
 this.display = false;
 }
-downLoad(){
+download(){
+  if(this.userPassword!=this.ManagerPassword)
+  alert("הסיסמא שהקשת שגויה")
+ else {
+  this.isManager=true;
   this.userService.getAllUsers().subscribe((succ) => {
-    this.all = succ;
-    console.log(this.all)
+    this.arrDownload = succ;
+    CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+  var anchor = document.createElement("A");
+  anchor.setAttribute("href", CsvString);
+  anchor.setAttribute("download", "somedata.csv");
+  document.body.append(anchor);
+  anchor.click();
   },
     (err) => {
       alert("התרחשה שגיאה בקבלת הנתונים");
       console.log(err)
     })
-    var c=""
-    this.all.map(i=>{c+=JSON.stringify(i)+"," ;c+="/n";})
-
-c="data:apliction/csv,"+ encodeURIComponent(c);
-var anchor=document.createElement("X");
-anchor.setAttribute("href",c);
-anchor.setAttribute("downLoad","somedata.csv");
-document.body.append(anchor);
-anchor.click();
-}gi
+    var CsvString = "";
+     this.arrDownload.map(item => {
+      CsvString+=JSON.stringify(item)+",";
+      CsvString += "\n";
+  });
+  }
 }
+IsManage(){
+  this.want=true;
+}}
+
+

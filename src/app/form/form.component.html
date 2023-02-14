@@ -32,21 +32,57 @@
       <mat-option value="8">לאומית</mat-option>
     </mat-select>
   </mat-form-field>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>מצב אישי</mat-label>
+      <mat-select #personalState name="personalState" required>
+        <mat-option value='true'>נשוי</mat-option>
+        <mat-option value='false'>רווק</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p *ngIf="personalState.value=='true'">
+      <mat-form-field appearance="fill">
+        <mat-label>תעודת זהות של בן זוג </mat-label> 
+        <input matInput  [(ngModel)]="userService.currentUserService.SpouseId"  name="SpouseId">
+      </mat-form-field> 
+    </p></div>
   <mat-radio-group aria-label="Select an option" [(ngModel)]="userService.currentUserService.Genus" name="Genus">
     <mat-radio-button value="male"> זכר</mat-radio-button>
     <mat-radio-button value="fmale">נקבה </mat-radio-button>
   </mat-radio-group>
+  <p></p>
 <!-- ילדים -->
+
+
    <p>לחץ להוספת ילדים</p>
-     <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="moreChild()">
-      <mat-icon>plus_one</mat-icon>
-    </button>
-   <input  placeholder="jkjljh" type="text" *ngIf="display"  [(ngModel)]="child.FirstName" name="childFirstName" required pattern="[a-zA-Z ]*"  #childFirstName="ngModel" placeholder="שם פרטי">
-   <input type="text"  *ngIf="display" [(ngModel)]="child.LastName" name="childLastName" required pattern="[a-zA-Z ]*"  #childLastName="ngModel" placeholder="שם משפחה">
-    <input  value="id" type="text" *ngIf="display" [(ngModel)]="child.IdNumber" name="childIdNumber" required pattern="[0-9]*"  #childIdNumber="ngModel"placeholder="תעודת זהות" >
-    <input type="date" *ngIf="display" [(ngModel)]="child.DateOfBirth" name="childDateOfBirth" required pattern="ng-pattern='/^((0[13578]|1[02])[\/.]31[\/.](18|19|20)[0-9]{2})|((01|0[3-9]|1[1-2])[\/.](29|30)[\/.](18|19|20)[0-9]{2})|((0[1-9]|1[0-2])[\/.](0[1-9]|1[0-9]|2[0-8])[\/.](18|19|20)[0-9]{2})|((02)[\/.]29[\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))$/*"  
-    #childDateOfBirth="ngModel" placeholder="תאריך לידה"> 
-    <input type="button"*ngIf="display" (click)="addChild()" value="add">
+   <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="moreChild()">
+    <mat-icon>plus_one</mat-icon>
+</button>
+   <div *ngIf="display">
+    <mat-form-field appearance="fill">
+      <mat-label>שם פרטי</mat-label> 
+      <input matInput required pattern="[a-zA-Z ]*" [(ngModel)]="child.FirstName"  name="childFirstName">
+    </mat-form-field> 
+    <mat-form-field appearance="fill">
+      <mat-label>תעודת זהות</mat-label>
+      <input matInput  required pattern="[0-9 ]*" [(ngModel)]="child.IdNumber"  name="childIdNumber"required>
+    </mat-form-field>
+    <input type="date"[(ngModel)]="child.DateOfBirth" name="childDateOfBirth" required >
+   </div>
+    <input type="button"*ngIf="display" (click)="addChild()" value="addChild">
     <input type="button"(click)="save()" value="addUser">
+
+
+
+    <input type="button"value="להורדת הנתונים"(click)="IsManage()">
+    <mat-form-field *ngIf="want" appearance="fill">
+      <mat-label>סיסמת מנהל</mat-label>
+      <input matInput  required pattern="[0-9 ]*" [(ngModel)]="userPassword"  name="userPassword"required>
+    </mat-form-field>
+    <div *ngIf="want">
+    <input  type="button"value=" להורדת הנתונים כמנהל"(click)="download()">
+  </div>
     </form> 
+
+
     

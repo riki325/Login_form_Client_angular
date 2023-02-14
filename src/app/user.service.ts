@@ -11,7 +11,7 @@ import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-i
 export class UserService {
   currentUser=new BehaviorSubject<PrivateUserDetails>(null);
   constructor( public http:HttpClient ) { }
-  currentUserService:PrivateUserDetails=new PrivateUserDetails(0,"","","", "01/01/2003"," ", " " ,-1," ")
+  currentUserService:PrivateUserDetails=new PrivateUserDetails(0,"","","", "01/01/2003"," ", " " ,-1," "," ")
   baseUrl=`${environment.baseUrl}`
   
   saveInStorage(user) {
@@ -26,12 +26,10 @@ export class UserService {
   removeFromStorage() {
     localStorage.removeItem("currentUser");
   }
-  // public addUser(user: PrivateUserDetails) {
-  //   // ~(`${this.baseUrl}/Post`);
-  //   return this.http.post<PrivateUserDetails>(`${this.baseUrl}`,{
+ 
     
       public addUser(user: PrivateUserDetails) {
-        // ~(`${this.baseUrl}/Post`);
+        
         return this.http.post<PrivateUserDetails>(`${this.baseUrl}`,{
           "FirstName":user.FirstName,
            "LastName": user.LastName,
@@ -40,38 +38,12 @@ export class UserService {
            'Genus': user.Genus,
            "HMO": user.HMO,
            "FamilyId": user.FamilyId,
-          "Status": user.Status
+          "Status": user.Status,
+          "SpouseId":user.SpouseId
+        
         })
         
       }
-    
-    
-      //   "firstName": "string",
-      //   "lastName": "string",
-      //   "idNumber": "string",
-      //   "dateOfBirth": "2023-02-13T20:38:26.655",
-      //   "genus": "string",
-      //   "hmo": "string",
-      //   "familyId": 0,
-      //   "status": "string"
-      // }
-    
-  
-
-
-  // addUser(user:PrivateUserDetails){
-  //    return this.http.post<PrivateUserDetails>(`${this.baseUrl}?u=${user}`, user)
-  //   // return this.http.post<any>(this.baseUrl, user);
-  // }
-  // public saveUser(user: PrivateUserDetails): Observable<any> {
-  //   const url = 
-  //   'https://localhost:7208/api/PrivateUserDetails';
-  //   return this.http.post<PrivateUserDetails>(url, user);
-  // }
-  // public addUser(c: PrivateUserDetails) {
-  //   ~(`${this.baseUrl}/Post`);
-  //   return this.http.post<PrivateUserDetails>(`${this.baseUrl}/?u=${c}`, c);
-  // }
   getAllUsers(){
     return this.http.get<PrivateUserDetails[]>(`${this.baseUrl}`)
   }

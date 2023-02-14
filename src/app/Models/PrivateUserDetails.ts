@@ -11,7 +11,7 @@ export default class PrivateUserDetails {
             public Genus: string,
             public HMO: string,
             public FamilyId: number,
-            public Status: string
-
+            public Status: string,
+            public SpouseId :string
         ) { }
 }
