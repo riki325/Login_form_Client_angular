@@ -1,6 +1,6 @@
 
 
-<form  (ngSubmit)="save()" #myform="ngForm" >
+<form>
     <p>פרטים אישיים</p>
   <mat-form-field appearance="fill">
     <mat-label>שם פרטי</mat-label>
@@ -10,29 +10,18 @@
   <div class="errors" *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)">שם יכול להכיל אותיות בלבד</div>
   <mat-form-field appearance="fill">
     <mat-label>שם משפחה</mat-label>
-  
     <input matInput [(ngModel)]="userService.currentUserService.LastName" name="LastName" required pattern="[a-zA-Z א-ת]*" #LastName="ngModel">
   </mat-form-field>
   <div class="errors" *ngIf="LastName.touched&&LastName.errors&&LastName.errors['required']">זהו שדה חובה</div>
   <div class="errors" *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)">שם יכול להכיל אותיות בלבד</div>
-   
-   <form  (ngSubmit)="save()" #myform="ngForm" > 
   <mat-form-field appearance="fill">
     <mat-label>תעודת זהות</mat-label>
     <input matInput [(ngModel)]="userService.currentUserService.IdNumber" name="IdNumber" required pattern="[0-9]*"  #IdNumber="ngModel">
   </mat-form-field>
   <div class="errors" *ngIf="IdNumber.touched&&IdNumber.errors&&IdNumber.errors['required']">זהו שדה חובה</div>
   <div class="errors" *ngIf="IdNumber.invalid && (IdNumber.dirty || IdNumber.touched)">לא יתכנו תווים שאינם ספרות בתעודת זהות</div>
-  
-
-  <form  (ngSubmit)="save()" #myform="ngForm" > 
-    
       <mat-label>תאריך לידה</mat-label>
      <input type="date" [(ngModel)]="userService.currentUserService.DateOfBirth" name="DateOfBirth">
-    
-    <!-- <div class="errors" *ngIf="DateOfBirth.touched&&DateOfBirth.errors&&DateOfBirth.errors['required']">זהו שדה חובה</div>
-    <div class="errors" *ngIf="DateOfBirth.invalid && (DateOfBirth.dirty || DateOfBirth.touched)">נא להזין תאריך חוקי</div> -->
-
   <p>קופת חולים</p>
   <mat-form-field appearance="fill">
     <mat-label>Select</mat-label>
@@ -43,35 +32,21 @@
       <mat-option value="8">לאומית</mat-option>
     </mat-select>
   </mat-form-field>
-  
   <mat-radio-group aria-label="Select an option" [(ngModel)]="userService.currentUserService.Genus" name="Genus">
     <mat-radio-button value="male"> זכר</mat-radio-button>
     <mat-radio-button value="fmale">נקבה </mat-radio-button>
   </mat-radio-group>
-  
 <!-- ילדים -->
-
-
-
-
-  <p>לחץ להוספת ילדים</p>
- 
-  
+   <p>לחץ להוספת ילדים</p>
      <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="moreChild()">
       <mat-icon>plus_one</mat-icon>
     </button>
-
-   
-   <input type="text" *ngIf="display" [(ngModel)]="child.FirstName" name="childFirstName" required pattern="[a-zA-Z ]*"  #childFirstName="ngModel" placeholder="שם פרטי">
-   
+   <input  placeholder="jkjljh" type="text" *ngIf="display"  [(ngModel)]="child.FirstName" name="childFirstName" required pattern="[a-zA-Z ]*"  #childFirstName="ngModel" placeholder="שם פרטי">
    <input type="text"  *ngIf="display" [(ngModel)]="child.LastName" name="childLastName" required pattern="[a-zA-Z ]*"  #childLastName="ngModel" placeholder="שם משפחה">
-   
     <input  value="id" type="text" *ngIf="display" [(ngModel)]="child.IdNumber" name="childIdNumber" required pattern="[0-9]*"  #childIdNumber="ngModel"placeholder="תעודת זהות" >
-  
     <input type="date" *ngIf="display" [(ngModel)]="child.DateOfBirth" name="childDateOfBirth" required pattern="ng-pattern='/^((0[13578]|1[02])[\/.]31[\/.](18|19|20)[0-9]{2})|((01|0[3-9]|1[1-2])[\/.](29|30)[\/.](18|19|20)[0-9]{2})|((0[1-9]|1[0-2])[\/.](0[1-9]|1[0-9]|2[0-8])[\/.](18|19|20)[0-9]{2})|((02)[\/.]29[\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))$/*"  
     #childDateOfBirth="ngModel" placeholder="תאריך לידה"> 
-    <input type="button"(click)="addChild()" value="add">
-   
-      <input type="submit" [disabled]="!myform.valid" />
-      
-    </form>
+    <input type="button"*ngIf="display" (click)="addChild()" value="add">
+    <input type="button"(click)="save()" value="addUser">
+    </form> 
+    

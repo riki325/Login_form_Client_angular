@@ -2,8 +2,9 @@
     margin-left: 8px;
     direction: rtl;
   }
-  body{direction: rtl;}
+  body{direction: rtl;
+  background-color: brown!important;}
   .child{
     size: 20%;
-    color:aqua;
+    color:aqua !important;
   }
