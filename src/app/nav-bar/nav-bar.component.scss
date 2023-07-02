@@ -2,12 +2,16 @@
 .example-spacer {
     flex: 1 1 auto;
   }
+  mat-toolbar{
+    margin-bottom: 5%;
+    bottom: 30%;
+  }
   #down{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
     position: absolute;
-    
+    border:cornflowerblue;
     margin-top: 5%;
     top:5%
     
@@ -15,5 +19,11 @@
   }
   #in{
     width: 150%;
+    padding: auto;
   }
-  
+  p{
+   text-align: center ; 
+   color:darkgrey;
+   margin-right: 18%;
+
+  }

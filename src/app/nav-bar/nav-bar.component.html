@@ -1,28 +1,26 @@
-
 <mat-toolbar>
- 
-  
-  <button mat-raised-button  (click)="IsManage()" >download the data</button>
+
+  <button mat-raised-button (click)="IsManage()">download the data</button>
   <div id="down">
-  <h5 *ngIf="want" ></h5>
-  
-  <input id="in" *ngIf="want"  required pattern="[0-9 ]*" [(ngModel)]="userPassword"  name="userPassword" required placeholder="Please enter an administrator password">
+    <input id="in" *ngIf="want" required pattern="[0-9 ]*" [(ngModel)]="userPassword" name="userPassword" required
+      placeholder="Please enter an administrator password">
+    <button mat-raised-button *ngIf="want" (click)="download()" [ngStyle]="{ 'margin.%': 10 }">download </button>
+  </div>
 
 
-<button mat-raised-button  *ngIf="want" (click)="download()" [ngStyle]="{ 'margin.%': 10 }" >download </button>
-</div>
- <a mat-button routerLink="form" >Register</a>
-  <a mat-button routerLink="guid" >Instructions</a>
-
- 
+  <a mat-button routerLink="form">Register</a>
+  <a mat-button routerLink="guid">Instructions</a>
   <span class="example-spacer"></span>
- 
- 
+<p>Hi dear user, please enter your personal details</p>
+  <span class="example-spacer"></span>
+  
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
   </button>
+
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>
+
 </mat-toolbar>
- 
+
