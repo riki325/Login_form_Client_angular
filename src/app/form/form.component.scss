@@ -1,60 +1,15 @@
-.example-container mat-form-field + mat-form-field {
-    margin-left: 8px;
-    direction: rtl;
-  }
-  body{direction: rtl;
-  background-color: brown!important;}
-  .child{
-    size: 20%;
-    color:aqua !important;
-  }
-  form{
-    margin-right: 25%;
-    margin-left: 30%;
-    background-color:cornsilk;
-  
-  }
-  .pclass{
-    color: rgb(240, 10, 106);
-    font-size: 130%;
-    direction: rtl;
-    text-align: center;
-   margin-right:10%;
-  }
-  .fill{
-   text-align: center;
-   align-items: center;
-   direction:rtl;
-  }
-  #date{
-    color: rgb(236, 12, 135);
-   text-align: center;
-   margin-right: 45%;
-   font-size: 150%;
 
+  :host {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    position: absolute;
+    top: 70%;
+    margin-top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-  #dd{direction: rtl;
-  margin-left: 20%;}
-  .down{
-    margin-left: 36%;
-    background-color: rgb(243, 19, 142);
-    font-size: 150%;
-  }
-  #save{
-    margin-left: 20%;
-    background-color: rgb(22, 223, 213);
-    font-size: 150%;
-  }
-  .cclass{
-    color: rgb(240, 10, 106);
-    font-size: 130%;
-  }
-  .center{
-    margin-left: 17%;
-  }
-  .downAll{
-    margin-left: 40%;
-  }
-  .all{
-    background-color: rgb(236, 215, 250)!important;
+  .errors{
+    align-items:flex-end;
+    font-size:70%;
   }

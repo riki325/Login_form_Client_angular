@@ -14,9 +14,9 @@ export class UserService {
   currentUserService:PrivateUserDetails=new PrivateUserDetails(0,"","","", "01/01/2003"," ", " " ,-1," "," ")
   baseUrl=`${environment.baseUrl}`
   
-  saveInStorage(user) {
-    localStorage.setItem("currentName", JSON.stringify(user));
-  }
+//   saveInStorage(user:PrivateUserDetails){
+// localStorage.setItem("currenUser")
+//   }
   getFromStorage() {
     let u = localStorage.getItem("currentName");
     if (!u)

@@ -3,37 +3,36 @@ import PrivateUserDetails from '../Models/PrivateUserDetails';
 import { UserService } from '../user.service';
 
 import {FormControl, Validators} from '@angular/forms';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
+
 })
+
 export class FormComponent implements OnInit {
   childFName = new FormControl('', [Validators.required]);
   userArr: PrivateUserDetails[] = []
   user = new PrivateUserDetails(0, " ", " ", " ", "01/01/2003", " ", " ", -1, " "," ");
   child = new PrivateUserDetails(0, " ", " ", " ",  "01/01/2003", " ", " ", -1, " "," ");
   childArr: PrivateUserDetails[] ;
-  arrDownload:PrivateUserDetails[]=[];
+  
   display = false;
   index: number;
   all: PrivateUserDetails[];
   familyId = 0;
   displayWife = false;
   Married=false;
-want=false;
-userPassword="";
-ManagerPassword="123"
-isManager=false;
+
   constructor(public userService: UserService) { }
 
-  logIn() {
-    this.userService.saveInStorage(this.user);
-    this.userService.currentUser.next(this.user);
+  // logIn() {
+  //    this.userService.saveInStorage(this.user);
+  //   this.userService.currentUser.next(this.user);
 
-  }
+  // }
  
 
   ngOnInit(): void {
@@ -85,33 +84,6 @@ addChild() {
     this.child=new PrivateUserDetails(0, " ", " ", " ", null, " ", " ", -1, " "," ");
 this.display = false;
 }
-download(){
-  if(this.userPassword!=this.ManagerPassword)
-  alert("הסיסמא שהקשת שגויה")
- else {
-  this.isManager=true;
-  this.userService.getAllUsers().subscribe((succ) => {
-    this.arrDownload = succ;
-    CsvString = "data:application/csv," + encodeURIComponent(CsvString);
-  var anchor = document.createElement("A");
-  anchor.setAttribute("href", CsvString);
-  anchor.setAttribute("download", "somedata.csv");
-  document.body.append(anchor);
-  anchor.click();
-  },
-    (err) => {
-      alert("התרחשה שגיאה בקבלת הנתונים");
-      console.log(err)
-    })
-    var CsvString = "";
-     this.arrDownload.map(item => {
-      CsvString+=JSON.stringify(item)+",";
-      CsvString += "\n";
-  });
-  }
+
+
 }
-IsManage(){
-  this.want=true;
-}}
-
-

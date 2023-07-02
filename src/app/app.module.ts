@@ -16,6 +16,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -28,6 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
     
   ],
   imports: [
+  
+ 
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -45,8 +48,10 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,MatSelectModule,MatRadioModule,MatDatepickerModule,
-    MatIconModule
-    
+    MatIconModule,
+    MatGridListModule,
+   
+
   ],
   providers: [],
   bootstrap: [AppComponent]
