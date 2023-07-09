@@ -9,6 +9,7 @@ import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-i
   providedIn: 'root'
 })
 export class UserService {
+  isPopupOpen=false;
   currentUser=new BehaviorSubject<PrivateUserDetails>(null);
   constructor( public http:HttpClient ) { }
   currentUserService:PrivateUserDetails=new PrivateUserDetails(0,"","","", "01/01/2003"," ", " " ,-1," "," ")

@@ -12,8 +12,8 @@
 <mat-form-field>
   <mat-label>last name</mat-label>
   <input matInput  [(ngModel)]="userService.currentUserService.LastName" name="LastName" required pattern="[a-zA-Z א-ת]*" #LastName="ngModel">
-  <div class="errors" *ngIf="FirstName.touched&&FirstName.errors&&FirstName.errors['required']">This is a required field</div>
-  <div class="errors" *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)">A name can only contain letters  </div>
+  <div class="errors" *ngIf="LastName.touched&&LastName.errors&&LastName.errors['required']">This is a required field</div>
+  <div class="errors" *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)">A name can only contain letters  </div>
 </mat-form-field>
 
 <mat-form-field>
@@ -51,45 +51,48 @@
   <mat-form-field>
     <mat-label>Spouse's ID number</mat-label>
     <input matInput [(ngModel)]="userService.currentUserService.SpouseId"  name="SpouseId">
-    <div class="errors" *ngIf="IdNumber.touched&&IdNumber.errors&&IdNumber.errors['required']">This is a required field  </div>
-    <div class="errors" *ngIf="IdNumber.invalid && (IdNumber.dirty || IdNumber.touched)">An ID can only contain digits</div>
+    <!-- <div class="errors" *ngIf="SpouseId.touched&&SpouseId.errors&&SpouseId.errors['required']">This is a required field  </div>
+    <div class="errors" *ngIf="SpouseId.invalid && (SpouseId.dirty || SpouseId.touched)">An ID can only contain digits</div> -->
   </mat-form-field>
 </div>
 
 
  
   <button mat-raised-button color="accent"(click)="moreChild()">add child</button>
+<div class="popup"  *ngIf="userService.isPopupOpen">
+<div id="child" *ngIf="userService.isPopupOpen">
 
-
-<mat-form-field *ngIf="display">
   <mat-form-field>
     <mat-label>first name</mat-label>
-    <input matInput  [(ngModel)]="child.FirstName"  name="childFirstName" required pattern="[a-zA-Z א-ת]*" #FirstName="ngModel" >
-    <div class="errors" *ngIf="FirstName.touched&&FirstName.errors&&FirstName.errors['required']">This is a required field</div>
-    <div class="errors" *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)">A name can only contain letters  </div>
+    <input matInput  [(ngModel)]="child.FirstName"  name="childFirstName" required pattern="[a-zA-Z א-ת]*" #childFirstName="ngModel" >
+    <div class="errors" *ngIf="childFirstName.touched&&childFirstName.errors&&childFirstName.errors['required']">This is a required field</div>
+    <div class="errors" *ngIf="childFirstName.invalid && (childFirstName.dirty || childFirstName.touched)">A name can only contain letters  </div>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>ID number</mat-label>
-    <input matInput  [(ngModel)]="child.IdNumber"  name="childIdNumber"required required pattern="[0-9]*"  #IdNumber="ngModel">
-    <div class="errors" *ngIf="IdNumber.touched&&IdNumber.errors&&IdNumber.errors['required']">This is a required field  </div>
-    <div class="errors" *ngIf="IdNumber.invalid && (IdNumber.dirty || IdNumber.touched)">An ID can only contain digits</div>
+    <input matInput  [(ngModel)]="child.IdNumber"  name="childIdNumber" required required pattern="[0-9]*"  #childIdNumber="ngModel">
+    <div class="errors" *ngIf="childIdNumber.touched&&childIdNumber.errors&&childIdNumber.errors['required']">This is a required field  </div>
+    <div class="errors" *ngIf="childIdNumber.invalid && (childIdNumber.dirty ||childIdNumber.touched)">An ID can only contain digits</div>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Date of birth</mat-label>
     <input matInput type="date" [(ngModel)]="child.DateOfBirth" name="childDateOfBirth" required id="dd" >
   </mat-form-field>
-</mat-form-field>
 
+
+<button mat-raised-button  color="accent" (click)="addChild()" [ngStyle]="{'margin-top.%': 10 ,'margin-bottom.%': 10 }" > add</button>
+</div>
+</div>
 
 <button mat-raised-button  color="accent" (click)="save()" [ngStyle]="{'margin-top.%': 10 ,'margin-bottom.%': 10 }" > addUser</button>
 
-
 </div>
 
+<!-- <button (click)="openPopup()">Open Popup</button>
 
-
+<app-pop-up-window *ngIf="userService.isPopupOpen"></app-pop-up-window> -->
 
 
 

@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 
 import {FormControl, Validators} from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { PopUpWindowComponent } from '../pop-up-window/pop-up-window.component';
 
 @Component({
   selector: 'app-form',
@@ -25,15 +26,12 @@ export class FormComponent implements OnInit {
   familyId = 0;
   displayWife = false;
   Married=false;
+  
+
+
 
   constructor(public userService: UserService) { }
 
-  // logIn() {
-  //    this.userService.saveInStorage(this.user);
-  //   this.userService.currentUser.next(this.user);
-
-  // }
- 
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((succ) => {
@@ -49,6 +47,7 @@ this.userService.currentUserService.FamilyId=this.familyId++;
   }
   save() {
     
+   this.addChild()
     if(  this.userService.currentUserService.Genus=="male"&&this.Married==true)
     this.userService.currentUserService.Status="father";
     else if(this.userService.currentUserService.Genus=="fmale"&&this.Married==true)
@@ -70,7 +69,8 @@ this.userService.currentUserService.FamilyId=this.familyId++;
     return this.childFName.hasError('childFName') ? 'Not a valid childFName' : '';
   }
 moreChild() {
-  this.display = true;
+ 
+  this.userService. isPopupOpen = true;
 }
 
 addChild() {
@@ -82,8 +82,14 @@ addChild() {
   this.userService.addUser(this.child).subscribe((succ) => {
     console.log("succ")})
     this.child=new PrivateUserDetails(0, " ", " ", " ", null, " ", " ", -1, " "," ");
-this.display = false;
+    this.userService.isPopupOpen = false;
 }
 
 
+
+     openPopup() {
+    this.userService. isPopupOpen = true;
+     }
+
+     
 }

@@ -17,6 +17,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { HeaderComponent } from './header/header.component';
+import { ContainerComponent } from './container/container.component';
+import { FooterComponent } from './footer/footer.component';
+import { PopUpWindowComponent } from './pop-up-window/pop-up-window.component';
 
 
 @NgModule({
@@ -25,6 +29,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
     NavBarComponent,
     FormComponent,
     GuidComponent,
+    HeaderComponent,
+    ContainerComponent,
+    FooterComponent,
+    PopUpWindowComponent,
     
     
   ],
